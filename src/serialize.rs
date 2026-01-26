@@ -1159,8 +1159,8 @@ pub(crate) fn prepare_fonts_for_serialization(
         
         // Create RuntimeSubsetInfo for font dictionary
         #[cfg(feature = "text_layout")]
-        let subset_info = if false && do_subset && 
-                             pdf_font.meta.requires_subsetting && 
+        let subset_info = if do_subset &&
+                             pdf_font.meta.requires_subsetting &&
                              pdf_font.meta.embedding_mode == crate::font::FontEmbeddingMode::Subset {
             // Try subsetting, fall back to full font if it fails
             create_subset_runtime_info(font_id, pdf_font, &glyph_usage, warnings)
